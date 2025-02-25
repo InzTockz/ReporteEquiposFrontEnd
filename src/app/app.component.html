@@ -1,18 +1,34 @@
-<nav class="flex justify-between bg-gray-200">
-    <div class="flex gap-3">
+<nav class="flex justify-between bg-orange-500 p-5">
+    <div class="flex gap-3 text-white font-medium">
         <a>Reportes de Equipos Battilana</a>
-        <a>2do boton</a>
     </div>
     <div>
-        <a>Botoncito</a>
+        <a href="#" class="rounded-lg text-white bg-slate-700 hover:bg-slate-800 hover:text-white py-2 px-4 font-medium border border-transparent focus:outline-none">Administrar</a>
     </div>
 </nav>
-<div class="flex flex-col sm:flex-row justify-evenly items-center mt-10">
-    <div class="flex flex-col ">CAJA IZQUIERDA</div>
-    <div class="flex flex-col gap-10">
-        <div>
+<div class="flex flex-col sm:flex-row gap-5 sm:gap-5 justify-evenly items-center mt-10">
+    <div class="flex flex-col w-1/2">
+        <div class="shadow-2xl p-4">
+            <table class="table-fixed border-collapse w-full border border-slate-600 text-sm ">
+                <thead>
+                    <tr> 
+                        <th class="border border-slate-500 font-semibold p-4 w-1/2 text-left">Nombres y Apellidos</th>
+                        <th class="border border-slate-500 font-semibold p-4 w-1/2 text-left">Area</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="border border-slate-500 p-4 text-left">asd</td>
+                        <td class="border border-slate-500 p-4 text-left">asd</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="flex flex-col gap-5 ">
+        <div class="shadow-2xl p-8 px-12 flex justify-center sm:justify-center">
             <app-graficos></app-graficos>
         </div>
-        <div>SUB CAJA DERECHA 2 'CAJA DE GRAFICOS'</div>
+        <div class="shadow-2xl p-10">SUB CAJA DERECHA 2 'CAJA DE GRAFICOS'</div>
     </div>
 </div>

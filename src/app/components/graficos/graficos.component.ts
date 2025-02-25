@@ -23,16 +23,19 @@ export type ChartOptions = {
 })
 export class GraficosComponent implements OnInit{
   @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
+  public chartOptions!: Partial<ChartOptions>;
 
   constructor() {
+  }
+
+  ngOnInit(): void {
     this.chartOptions = {
-      series: [44, 55, 13, 43, 22],
+      series: [50, 10, 10, 10],
       chart: {
-        width: 380,
+        width: 400,
         type: "pie"
       },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      labels: ["2024", "2021", "2019", "2015"],
       responsive: [
         {
           breakpoint: 480,
@@ -47,9 +50,6 @@ export class GraficosComponent implements OnInit{
         }
       ]
     };
-  }
-
-  ngOnInit(): void {
   }
 
 }
