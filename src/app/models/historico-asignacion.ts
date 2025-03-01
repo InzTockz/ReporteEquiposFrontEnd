@@ -1,8 +1,12 @@
 export class HistoricoAsignacion {
     idHistorico?:number;
-    idUsuarioAsignado?:number;
+    modeloEquipo?:string;
+    serieEquipo?:string;
+    modeloProcesador?:string;
+    nombreMarca?:string;
+    capacidadAlmacenamiento?:string;
+    tamanioMemoriaRam?:string;
+    fechaIngresoEquipo?:Date;
+    fechaFabricacionEquipo?:Date;
     idEquipo?:number;
-    detalleHistorico?:string;
-    fechaHistorico?:string;
-    estadoHistorico?:boolean;
 }

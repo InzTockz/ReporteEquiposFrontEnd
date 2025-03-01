@@ -32,7 +32,7 @@ export class GraficosComponent implements OnInit{
     this.chartOptions = {
       series: [50, 10, 10, 10],
       chart: {
-        width: 400,
+        width: 350,
         type: "pie"
       },
       labels: ["2024", "2021", "2019", "2015"],

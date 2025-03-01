@@ -1,0 +1,30 @@
+<div class="container max-auto p-4">
+    <button class="bg-blue-500 dark:bg-slate-900 text-white px-4 py-2 rounded" (click)="openModal()">
+        Open Modal
+    </button>
+
+    <!-- Fondo oscuro del modal con animación -->
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center transition-opacity duration-300 ease-out"
+        [ngClass]="isModalOpen ? 'opacity-100 visible': 'opacity-0 invisible'"
+        (click)="closeModalOnOutSideClick($event)">
+
+        <!-- Contenedor del modal con animación de apertura y cierre -->
+        <div class="bg-white dark:bg-gray-900 dark:text-gray-100 p-8 rounded-lg shadow-lg max-w-md w-full relative transform transition-all duration-300 ease-out"
+            [ngClass]="isModalOpen ? 'scale-100 opacity-100' : 'scale-75 opacity-0'">
+
+            <h2 class="text-2xl font-bold mb-4">Modal Title</h2>
+            <p class="mb-6">Este es un modal con animación usando Tailwind CSS y Angular Signals</p>
+
+            <!-- Botón para cerrar -->
+            <button class="absolute top-3 right-2 text-gray-600 hover:text-gray-900" (click)="closeModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6 text-gray-600 hover:text-gray-300">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </button>
+
+            <button class="bg-red-500 text-white px-4 py-2 rounded ml-auto" (click)="closeModal()">Cerrar</button>
+        </div>
+    </div>
+</div>
