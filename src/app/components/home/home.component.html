@@ -1,18 +1,10 @@
-<nav class="flex justify-between bg-orange-500 p-5">
-    <div class="flex gap-3 text-white font-medium">
-        <a>Reportes de Equipos Battilana</a>
-    </div>
-    <div>
-        <a href="#"
-            class="rounded-lg text-white bg-slate-700 hover:bg-slate-800 hover:text-white py-2 px-4 font-medium border border-transparent focus:outline-none">Administrar</a>
-    </div>
-</nav>
 <div class="flex flex-col sm:flex-row sm:gap-5 justify-evenly max-w-full max-h-full p-5">
     <!-- Columna de Listado-->
     <div class="flex flex-col justify-center items-center w-1/2 ">
         <div class="flex mb-10 gap-3 mt-5">
             <a href="#"
-                class="rounded-lg text-white font-black bg-orange-400 p-3 hover:bg-orange-500 hover:scale-110">Registrar</a>
+                class="rounded-lg text-white font-black bg-orange-400 p-3 hover:bg-orange-500 hover:scale-110">Cambiar a
+                Equipos</a>
             <select name="area" (change)="listadoUsuariosAsignados()" [(ngModel)]="idArea"
                 class="rounded-lg text-white font-black bg-orange-400 p-3 hover:bg-orange-500 overflow-auto">
                 <option [value]="-1">Seleccione Areas</option>
@@ -68,76 +60,91 @@
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-5xl w-full relative transform transition-all duration-300 ease-out"
         [ngClass]="isModalOpen ? 'scale-100 opacity-100' : 'scale-75 opacity-0'">
 
-        <h2 class="text-2xl font-bold mb-10">Detalles del Equipo</h2>
+        <h2 class="text-3xl font-bold mb-3">Detalles del Equipo</h2>
         <div class="flex flex-row gap-5 justify-between">
-            <div class="flex flex-col gap-5 mt-5">
+            <div class="flex flex-col gap-5 mt-5 items-center justify-center">
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col">
                         <label class="mb-2">Modelo</label>
-                        <input [(ngModel)]="historicoAsignacion.modeloEquipo" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
+                        <input [(ngModel)]="historicoAsignacion.modeloEquipo"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                     <div class="flex flex-col">
                         <label class="mb-2">Serie</label>
-                        <input [(ngModel)]="historicoAsignacion.serieEquipo" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [(ngModel)]="historicoAsignacion.serieEquipo"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
-                    
+
                 </div>
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col">
                         <label class="mb-2">Procesador</label>
-                        <input [ngModel]="historicoAsignacion.modeloProcesador" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [ngModel]="historicoAsignacion.modeloProcesador"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                     <div class="flex flex-col">
                         <label class="mb-2">Marca</label>
-                        <input [ngModel]="historicoAsignacion.nombreMarca" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
-                    </div>    
+                        <input [ngModel]="historicoAsignacion.nombreMarca"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
+                    </div>
                 </div>
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col">
                         <label class="mb-2">Almacenamiento</label>
-                        <input [ngModel]="historicoAsignacion.capacidadAlmacenamiento" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [ngModel]="historicoAsignacion.capacidadAlmacenamiento"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                     <div class="flex flex-col">
                         <label class="mb-2">Memoria Ram</label>
-                        <input [ngModel]="historicoAsignacion.tamanioMemoriaRam" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [ngModel]="historicoAsignacion.tamanioMemoriaRam"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                 </div>
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col">
                         <label class="mb-2">Fecha de Ingreso</label>
-                        <input [ngModel]="historicoAsignacion.fechaIngresoEquipo" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [ngModel]="historicoAsignacion.fechaIngresoEquipo"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                     <div class="flex flex-col">
                         <label class="mb-2">Fecha de Fabricacion</label>
-                        <input [ngModel]="historicoAsignacion.fechaFabricacionEquipo" class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black">
+                        <input [ngModel]="historicoAsignacion.fechaFabricacionEquipo"
+                            class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
                 </div>
             </div>
-            <div class="max-h-96 max-w-full overflow-auto w-full shadow-2xl p-2 flex flex-col items-center">
-                <div class="w-full h-full flex flex-col items-center">
-                    <table class="table-auto border-collapse w-full border-slate-600 text-sm ">
-                        <thead class="bg-gray-300 sticky -top-2.5">
-                            <tr>
-                                <th class="border border-slate-500 font-semibold p-4 w-1/2 text-left">Id
-                                </th>
-                                <th class="border border-slate-500 font-semibold p-4 w-1/2 text-left">Observaciones</th>
-                                <th class="border border-slate-500 font-semibold p-4 w-1/2 text-center">Fecha
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let he of historicoEquipo">
-                                <td class="border border-slate-500 p-4 text-left">{{he.idEquipo}}</td>
-                                <td class="border border-slate-500 p-4 text-left">{{he.observacionEquipos}}</td>
-                                <td class="border border-slate-500 text-center p-4">
-                                    {{he.fechaHistoricoEquipos}}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="flex flex-col gap-2 justify-center items-center">
+                <div class="flex flex-row justify-center p-1 overflow-hidden">
+                    <h1 class="text-red-700 font-bold text-center text-2xl">Mantenimientos</h1>
+                </div>
+                <div class="max-h-96 max-w-full overflow-auto w-full shadow-2xl p-2 flex flex-col items-center">
+                    <div class="w-full h-full flex flex-col items-center">
+                        <table class="table-fixed border-collapse w-full border-slate-600 text-sm ">
+                            <thead class="bg-gray-300 sticky -top-2.5">
+                                <tr>
+                                    <th class="border border-slate-500 font-semibold p-3 w-1/12 text-left">Id
+                                    </th>
+                                    <th class="border border-slate-500 font-semibold p-3 w-1/2 text-left">Observaciones
+                                    </th>
+                                    <th class="border border-slate-500 font-semibold p-3 w-1/6 text-center">Fecha
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let he of HistoricoEquipoListado">
+                                    <td class="border border-slate-500 p-4 text-left">{{he.idHistoricoEquipos}}</td>
+                                    <td class="border border-slate-500 p-4 text-left">{{he.observacionEquipos}}</td>
+                                    <td class="border border-slate-500 text-center p-4">
+                                        {{he.fechaHistoricoEquipos}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            
+
+
         </div>
 
         <!-- Botón para cerrar -->
@@ -153,6 +160,6 @@
                 <button class="bg-red-500 text-white px-3 py-1 rounded ml-auto" (click)="closeModal()">Cerrar</button>
             </div>
         </div>
-        
+
     </div>
 </div>

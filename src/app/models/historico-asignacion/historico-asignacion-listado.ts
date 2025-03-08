@@ -1,4 +1,4 @@
-export class HistoricoAsignacion {
+export class HistoricoAsignacionListado {
     idHistorico?:number;
     modeloEquipo?:string;
     serieEquipo?:string;
@@ -8,5 +8,7 @@ export class HistoricoAsignacion {
     tamanioMemoriaRam?:string;
     fechaIngresoEquipo?:Date;
     fechaFabricacionEquipo?:Date;
+    fechaHistorico?:Date;
     idEquipo?:number;
+    nombreUsuarioAsignado?:string;
 }

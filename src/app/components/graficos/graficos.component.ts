@@ -4,14 +4,17 @@ import { ChartComponent, NgApexchartsModule } from "ng-apexcharts";
 import {
   ApexNonAxisChartSeries,
   ApexResponsive,
-  ApexChart
+  ApexChart,
 } from "ng-apexcharts";
+import { EquipoService } from '../../services/equipo.service';
+import { firstValueFrom } from 'rxjs';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   responsive: ApexResponsive[];
   labels: any;
+  colors: string[];
 };
 
 @Component({
@@ -21,21 +24,40 @@ export type ChartOptions = {
   templateUrl: './graficos.component.html',
   styleUrl: './graficos.component.css'
 })
-export class GraficosComponent implements OnInit{
+export class GraficosComponent implements OnInit {
   @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions!: Partial<ChartOptions>;
+  public chartOptions: Partial<ChartOptions> = {};
 
-  constructor() {
+  
+
+  constructor(private equipoService:EquipoService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+
+    const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
+    const series = await Promise.all(years.map(year => this.listadoPorFechaFabricacion(year)));
+
     this.chartOptions = {
-      series: [50, 10, 10, 10],
+      series: series,
       chart: {
         width: 350,
-        type: "pie"
+        type: "pie",
+        dropShadow: {
+          enabled: true,
+          enabledOnSeries: undefined,
+          top: 0,
+          left: 0,
+          blur: 2,
+          color: '#000',
+          opacity: 0.35
+        }
       },
-      labels: ["2024", "2021", "2019", "2015"],
+      colors: ["#007bff", "#28a745", "#ffc107", "#dc3545", "#6f42c1",
+        "#17a2b8", "#20c997", "#fd7e14", "#e83e8c", "#6610f2",
+        "#ff5733", "#33ff57", "#5733ff", "#ff33a8", "#a833ff"
+      ],
+      labels: ["2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015"],
       responsive: [
         {
           breakpoint: 480,
@@ -50,6 +72,11 @@ export class GraficosComponent implements OnInit{
         }
       ]
     };
+  }
+
+  async listadoPorFechaFabricacion(fechaFab:number):Promise<number>{
+    const data = await firstValueFrom(this.equipoService.listadoPorFechaDeFabricacion(fechaFab));
+    return data.length;
   }
 
 }

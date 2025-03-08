@@ -1,0 +1,61 @@
+<div class="flex flex-row justify-center items-start p-10">
+    <div class="flex flex-row">
+        <!-- Caja de registro-->
+        <div class="flex flex-col justify-center items-center w-1/2">
+            <form>
+                <div class="flex flex-col shadow-2xl p-8 gap-2">
+                    <div>
+                        <h1 class="text-3xl font-bold">Registro de Asignaciones</h1>
+                    </div>
+                    <div class="flex flex-col justify-center items-center mt-6 mb-1">
+                        <!--Using items input-->
+                        <ng-select name="usuarioAsignado" class="w-3/5 font-semibold rounded ring-1"
+                            placeholder="Seleccione Usuario" [(ngModel)]="historicoAsignacion.idUsuarioAsignado">
+                            <ng-option *ngFor="let ua of usuarioAsignado"
+                                [value]="ua.idUsuarioAsignado">{{ua.nombreUsuarioAsignado}}</ng-option>
+                        </ng-select>
+                    </div>
+                    <div class="flex flex-col justify-center items-center mt-1">
+                        <ng-select name="Serie Equipo" class="w-3/5 font-semibold rounded ring-1"
+                            [(ngModel)]="historicoAsignacion.idEquipo" placeholder="Seleccione Equipo"
+                            (change)="listadoEquipoPorId()">
+                            <ng-option *ngFor="let e of equipo" [value]="e.idEquipo">{{e.modeloEquipo}}</ng-option>
+                        </ng-select>
+                        <a class="mt-1.5" *ngIf="serieEquipo==null ? false:true"><span
+                                class="font-semibold text-gray-400">Serie: </span><span
+                                class="font-bold text-gray-400">{{serieEquipo}}</span></a>
+                    </div>
+                    <div class="flex flex-col justify-center items-center gap-4 mt-8">
+                        <span class=" font-bold text-black">Detalle del estado del
+                            Equipo</span>
+                        <textarea name="detalleHistorico" class="ring-2 w-60 h-28 p-2" [(ngModel)]="historicoAsignacion.detalleHistorico"></textarea>
+                        <button class="bg-blue-600 rounded-xl p-2 text-white" (click)="registrarAsignacion()">Registrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Caja de listado -->
+        <div class="flex flex-col w-1/2 gap-5">
+            <div class="max-h-[450px] overflow-auto relative">
+                <table class="table-fixed w-full border-gray-300">
+                    <thead class="sticky -top-0.5 left-0 right-0  bg-gray-200">
+                        <tr>
+                            <th class="border border-gray-300 p-2 text-left w-1/12">Id</th>
+                            <th class="border border-gray-300 p-2 text-left">Modelo Del Equipo</th>
+                            <th class="border border-gray-300 p-2 text-left">Usuario</th>
+                            <th class="border border-gray-300 p-2 text-left">Fecha de Asignacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ha of HistoricoAsignacionListado">
+                            <td class="border border-gray-300 p-2">{{ha.idHistorico}}</td>
+                            <td class="border border-gray-300 p-2">{{ha.modeloEquipo}}</td>
+                            <td class="border border-gray-300 p-2">{{ha.nombreUsuarioAsignado}}</td>
+                            <td class="border border-gray-300 p-2 text-center">{{ha.fechaHistorico}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

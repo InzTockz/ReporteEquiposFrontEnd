@@ -8,10 +8,11 @@ import { AreasService } from './services/areas.service';
 import { Areas } from './models/areas';
 import { FormsModule } from '@angular/forms';
 import { EquipoAsignadoComponent } from "./components/modals/equipo-asignado/equipo-asignado.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet],
+    imports: [RouterOutlet, NavbarComponent],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

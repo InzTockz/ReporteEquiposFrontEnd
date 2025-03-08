@@ -7,9 +7,9 @@ import { GraficosComponent } from "../graficos/graficos.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HistoricoAsignacionService } from '../../services/historico-asignacion.service';
-import { HistoricoAsignacion } from '../../models/historico-asignacion';
-import { HistoricoEquipo } from '../../models/historico-equipo';
 import { HistoricoEquipoService } from '../../services/historico-equipo.service';
+import { HistoricoAsignacionListado } from '../../models/historico-asignacion/historico-asignacion-listado';
+import { HistoricoEquipoListado } from '../../models/historico-equipo/historico-equipo-listado';
 
 @Component({
   selector: 'app-home',
@@ -23,15 +23,15 @@ export class HomeComponent {
 
   usuarioAsignado: UsuarioAsignado[] = [];
   areas: Areas[] = [];
-  historicoEquipo: HistoricoEquipo[] = [];
+  HistoricoEquipoListado: HistoricoEquipoListado[] = [];
 
   idArea: number = -1;
-  historicoAsignacion:HistoricoAsignacion = new HistoricoAsignacion();
-  
+  historicoAsignacion: HistoricoAsignacionListado = new HistoricoAsignacionListado();
+
 
   constructor(private usuarioAsignadoService: UsuarioAsignadoService, private areasService: AreasService,
-              private historicoAsignacionService:HistoricoAsignacionService, 
-              private historicoEquipoService:HistoricoEquipoService) {
+    private historicoAsignacionService: HistoricoAsignacionService,
+    private historicoEquipoService: HistoricoEquipoService) {
   }
 
   ngOnInit(): void {
@@ -59,22 +59,25 @@ export class HomeComponent {
     )
   }
 
-  openModal(idUsuarioAsignado:number) {
+  openModal(idUsuarioAsignado: number) {
     this.isModalOpen = true;
 
     this.historicoAsignacionService.listadoPorIdUsuarioAsignado(idUsuarioAsignado).subscribe(
       data => {
-        if(data!=null){
+        if (data != null) {
           this.historicoAsignacion = data
         }
 
-        this.historicoEquipoService.listadoPorIdEquipo(data.idEquipo!).subscribe(
-          data => {
-            this.historicoEquipo = data;
-            console.log(data);
-          });
+        try {
+          this.historicoEquipoService.listadoPorIdEquipo(data.idEquipo!).subscribe(
+            data => {
+              this.HistoricoEquipoListado = data;
+              console.log(data);
+            });
+        } catch (error) {
+          this.HistoricoEquipoListado = [];
+        }
       });
-    
   }
 
   closeModal() {

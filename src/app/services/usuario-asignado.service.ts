@@ -16,6 +16,11 @@ export class UsuarioAsignadoService {
     return this.http.get<UsuarioAsignado[]>(`${this.apiUsuarioAsignado}/listado`);
   }
 
+  listadoPorDisponibilidad():Observable<UsuarioAsignado[]>{
+    return this.http.get<UsuarioAsignado[]>(`${this.apiUsuarioAsignado}/listadoPorDisponibilidad`);
+  }
+
+
   listadoPorId(idUsuarioAsignado:number):Observable<UsuarioAsignado[]>{
     return this.http.get<UsuarioAsignado[]>(`${this.apiUsuarioAsignado}/listado/${idUsuarioAsignado}`);
   }
