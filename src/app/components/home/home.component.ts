@@ -10,16 +10,18 @@ import { HistoricoAsignacionService } from '../../services/historico-asignacion.
 import { HistoricoEquipoService } from '../../services/historico-equipo.service';
 import { HistoricoAsignacionListado } from '../../models/historico-asignacion/historico-asignacion-listado';
 import { HistoricoEquipoListado } from '../../models/historico-equipo/historico-equipo-listado';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-home',
-  imports: [GraficosComponent, FormsModule, CommonModule],
+  imports: [GraficosComponent, FormsModule, CommonModule, NgSelectModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
 
   isModalOpen: boolean = false;
+  isModalLoginOpen: boolean = false;
 
   usuarioAsignado: UsuarioAsignado[] = [];
   areas: Areas[] = [];
@@ -78,6 +80,10 @@ export class HomeComponent {
           this.HistoricoEquipoListado = [];
         }
       });
+  }
+
+  openModalLogin():void{
+    this.isModalLoginOpen = true
   }
 
   closeModal() {

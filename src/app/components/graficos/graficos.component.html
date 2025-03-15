@@ -1,9 +1,48 @@
-<div id="chart">
-    <apx-chart
-      [series]="chartOptions.series!"
-      [chart]="chartOptions.chart!"
-      [labels]="chartOptions.labels!"
-      [responsive]="chartOptions.responsive!"
-      [colors]="chartOptions.colors!"
-    ></apx-chart>
+<div class="flex flex-col justify-start p-3">
+  <div class="flex flex-row justify-between mb-3 border-b-4">
+    <div class="flex flex-row justify-center items-center">
+      <h1 class="font-bold text-2xl">Estado de los equipos</h1>
+    </div>
+    <div class="flex flex-row justify-end items-center">
+      <div>
+        <span class="font-semibold text-red-600 text-xl mr-2">
+          Hora actual: {{hora}}
+        </span>
+      </div>
+    </div>
   </div>
+
+  <div class="flex flex-row justify-center">
+    <div>
+      <apx-chart [series]="[filtroAnioTres, filtroAnioDos, filtroAnioUno]" [chart]="chartOptions.chart!"
+        [labels]="chartOptions.labels!" [responsive]="chartOptions.responsive!"
+        [colors]="chartOptions.colors!"></apx-chart>
+    </div>
+  </div>
+  <div class="flex flex-col gap-1 p-4">
+    <div>
+      <span class="font-semibold text-xl">
+        Resumen:
+      </span>
+      <ul class="list-disc pl-10 text-justify  p-1 space-y-0.5">
+        <li class="text-sm text-justify"><span class="bg-green-400 font-semibold rounded-md pl-1 pr-1">Seccion
+            verde:</span> Equipos que se encuentran en la gama actual.
+        </li>
+        <li class="text-sm text-justify"><span class="bg-yellow-300 font-semibold rounded-md pl-1 pr-1">Seccion
+            amarilla:</span> Equipos que estan pronto a volverse obsoletos</li>
+        <li class="text-sm text-justify"><span class="bg-red-500 text-white font-semibold rounded-md pl-1 pr-1">Seccion
+            roja:</span> Equipos en estado de obsolescencia</li>
+      </ul>
+    </div>
+    <div>
+      <span class="font-semibold text-xl">
+        Recomendacion:
+      </span>
+      <ul class="list-disc pl-10 text-justify p-1 space-y-0.5">
+        <li class="text-sm">Considerar el reemplazo de equipos de los años 2014-2020.</li>
+        <li class="text-sm">Considerar repotenciar los equipos de la seccion amarilla</li>
+      </ul>
+    </div>
+  </div>
+
+</div>

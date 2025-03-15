@@ -1,21 +1,20 @@
 <div class="flex flex-col sm:flex-row sm:gap-5 justify-evenly max-w-full max-h-full p-5">
     <!-- Columna de Listado-->
-    <div class="flex flex-col justify-center items-center w-1/2 ">
-        <div class="flex mb-10 gap-3 mt-5">
-            <a href="#"
+    <div class="flex flex-col justify-start items-center w-1/2">
+        <div class="flex mb-5 gap-3 mt-5 w-full justify-center items-start">
+            <a href="#" hidden
                 class="rounded-lg text-white font-black bg-orange-400 p-3 hover:bg-orange-500 hover:scale-110">Cambiar a
                 Equipos</a>
-            <select name="area" (change)="listadoUsuariosAsignados()" [(ngModel)]="idArea"
-                class="rounded-lg text-white font-black bg-orange-400 p-3 hover:bg-orange-500 overflow-auto">
-                <option [value]="-1">Seleccione Areas</option>
-                <option *ngFor="let a of areas" [ngValue]="a.idArea" class="overflow-auto">{{a.descripcionArea}}
-                </option>
-            </select>
+            <ng-select name="area" (change)="listadoUsuariosAsignados()" [(ngModel)]="idArea"
+                class="w-2/5 border-y-2 border-x-2 font-semibold" >
+                <ng-option class="text-center" [value]="-1">Todas las areas</ng-option>
+                <ng-option *ngFor="let a of areas" [value]="a.idArea">{{a.descripcionArea}}</ng-option>
+            </ng-select>
         </div>
         <div class="shadow-2xl p-5">
             <div class="max-h-96 overflow-auto">
                 <table class="table-fixed border-collapse w-full border border-slate-600 text-sm ">
-                    <thead class="bg-gray-300 sticky top-0">
+                    <thead class="bg-gray-300 sticky -top-0.5">
                         <tr>
                             <th class="border border-slate-500 font-semibold p-4 w-1/2 text-left">Nombres y Apellidos
                             </th>
@@ -41,13 +40,9 @@
         </div>
     </div>
     <!-- Columna de Graficos -->
-    <div class="flex flex-col gap-5 w-1/2">
-        <div class="shadow-2xl flex justify-center sm:justify-center">
-            <app-graficos></app-graficos>
-        </div>
-        <div class="shadow-2xl flex justify-center sm:justify-center">
-            <app-graficos></app-graficos>
-
+    <div class="flex flex-col gap-5 w-1/2 justify-center items-center">
+        <div class="shadow-2xl flex sm:justify-center w-full">
+            <app-graficos class="w-full"></app-graficos>
         </div>
     </div>
 </div>
@@ -55,7 +50,6 @@
 <!-- Fondo oscuro del modal con animación -->
 <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center transition-opacity duration-300 ease-out"
     [ngClass]="isModalOpen ? 'opacity-100 visible': 'opacity-0 invisible'" (click)="closeModalOnOutSideClick($event)">
-
     <!-- Contenedor del modal con animación de apertura y cierre -->
     <div class="bg-white p-5 rounded-lg shadow-lg max-w-5xl w-full relative transform transition-all duration-300 ease-out"
         [ngClass]="isModalOpen ? 'scale-100 opacity-100' : 'scale-75 opacity-0'">
@@ -74,7 +68,6 @@
                         <input [(ngModel)]="historicoAsignacion.serieEquipo"
                             class="bg-slate-300 rounded-lg p-1 pl-2 ring-1 ring-black" readonly>
                     </div>
-
                 </div>
                 <div class="flex flex-row gap-2">
                     <div class="flex flex-col">
@@ -113,11 +106,11 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-2 justify-center items-center">
-                <div class="flex flex-row justify-center p-1 overflow-hidden">
+            <div class="flex flex-col gap-2 justify-start items-center">
+                <div class="flex flex-row justify-center items-center p-1 overflow-hidden w-full">
                     <h1 class="text-red-700 font-bold text-center text-2xl">Mantenimientos</h1>
                 </div>
-                <div class="max-h-96 max-w-full overflow-auto w-full shadow-2xl p-2 flex flex-col items-center">
+                <div class="max-h-96 max-w-full overflow-auto w-full shadow-2xl p-1 flex flex-col items-center">
                     <div class="w-full h-full flex flex-col items-center">
                         <table class="table-fixed border-collapse w-full border-slate-600 text-sm ">
                             <thead class="bg-gray-300 sticky -top-2.5">

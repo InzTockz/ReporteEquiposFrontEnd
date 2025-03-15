@@ -27,7 +27,7 @@ export class EquipoService {
     return this.http.get<Equipo[]>(`${this.apiEquipo}/listadoPorIdUsuarioAsignado/${idUsuarioAsignado}`);
   }
 
-  listadoPorFechaDeFabricacion(fechaFab:number):Observable<Equipo[]>{
-    return this.http.get<Equipo[]>(`${this.apiEquipo}/listadoPorFechaDeFabricacion/${fechaFab}`);
+  listadoEntreFechaDeFabricacion(fechaIni:number, fechaFin:number):Observable<Equipo[]>{
+    return this.http.get<Equipo[]>(`${this.apiEquipo}/listadoPorFechaDeFabricacion/ini/${fechaIni}/fin/${fechaFin}`);
   }
 }
